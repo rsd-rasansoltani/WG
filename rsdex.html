@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>پنل اصلی - وایرگارد و DNS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background: #f4f6f9;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    color: #1e293b;
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.8;
+  }
+  .container {
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 12px;
+    max-width: 820px;
+    margin: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    text-align: center;
+  }
+  .logo {
+    margin-bottom: 25px;
+  }
+  .logo img {
+    max-width: 180px;
+  }
+  h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #111827;
+  }
+  button {
+    width: 48%;
+    padding: 14px;
+    margin: 8px 1%;
+    border: 1px solid #2563eb;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    background: #2563eb;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  button:hover {
+    background: #1e40af;
+    border-color: #1e40af;
+  }
+  .panel {
+    display: none;
+    margin-top: 25px;
+    text-align: right;
+  }
+  label {
+    font-weight: 600;
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 14px;
+    color: #374151;
+  }
+  select {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    color: #111827;
+    margin-bottom: 18px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  select:focus {
+    border-color: #2563eb;
+  }
+  pre {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: left;
+    direction: ltr;
+    overflow-x: auto;
+  }
+  .ip-block {
+    background-color: #f1f5f9;
+    padding: 10px 14px;
+    margin-top: 10px;
+    border-radius: 6px;
+    direction: ltr;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+  }
+  .ip-text {
+    font-size: 14px;
+    color: #111827;
+    overflow-wrap: anywhere;
+  }
+  .copy-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .copy-btn:hover {
+    background: #1e40af;
+  }
+  .footer {
+    margin-top: 40px;
+    font-size: 13px;
+    color: #6b7280;
+  }
+  .footer a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    button {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="https://rasandesign.ir/images/cleanstart_logo.png" alt="Solrpubg Logo" />
+    </div>
+    <h2>  RSD </h2>
+    <button onclick="showPanel('wireguard')">وایرگارد</button>
+    <button onclick="showPanel('dns')">DNS اختصاصی</button>
+
+    <div id="wireguard" class="panel">
+      <h3> ساخت کانفیگ WireGuard </h3>
+      <label for="country-wg"> انتخاب کشور:</label>
+      <select id="country-wg">
+        <option value="germany">🇩🇪 آلمان</option>
+        <option value="turkey">🇹🇷 ترکیه</option>
+        <option value="uae">🇦🇪 امارات</option>
+        <option value="iraq">🇮🇶 عراق</option>
+        <option value="netherlands">🇳🇱 هلند</option>
+        <option value="russia">🇷🇺 روسیه</option>
+        <option value="france">🇫🇷 فرانسه</option>
+      </select>
+      <button onclick="generateWireGuardConfig()"> بساز و دانلود کن</button>
+      <pre id="configOutput"></pre>
+    </div>
+
+    <div id="dns" class="panel">
+      <h3>ساخت DNS اختصاصی</h3>
+      <label for="country-dns"> انتخاب کشور:</label>
+      <select id="country-dns">
+        <option value="germany">🇩🇪 آلمان</option>
+        <option value="turkey">🇹🇷 ترکیه</option>
+        <option value="uae">🇦🇪 امارات</option>
+        <option value="iraq">🇮🇶 عراق</option>
+        <option value="netherlands">🇳🇱 هلند</option>
+        <option value="russia">🇷🇺 روسیه</option>
+        <option value="france">🇫🇷 فرانسه</option>
+      </select>
+      <button onclick="generateIPs()"> تولید آی‌پی‌ها</button>
+      <div id="output"></div>
+    </div>
+
+<div class="footer">
+  <p>سازنده: <strong>Network RSD456 (rasBET) </strong></p>
+  <p>Channels RASAN DESIGN:</p>
+  <p>
+    <a href="https://www.rasandesign.ir" target="_blank">WEB site page</a> |
+    <a href="https://t.me/RSD_456" target="_blank">Telegram Channel</a> |
+    <a href="https://ZANGIgroup.ir" target="_blank">ZANGIgroup WEB</a>
+  </p>
+</div>
+
+  <script>
+    function showPanel(id) {
+      document.querySelectorAll('.panel').forEach(p => p.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function randHexSegment(len = 4) {
+      return [...Array(len)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+    }
+
+    const ipData = {
+      france: {
+        ipv4: () => `72.89.${Math.floor(Math.random()*256)}.${Math.floor(Math.random()*256)}`,
+        ipv6: () => `fr02:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}`
+      },
+      germany: {
+        ipv4: () => `185.97.${Math.floor(Math.random()*256)}.${Math.floor(Math.random()*256)}`,
+        ipv6: () => `de02:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}`
+      },
+      turkey: {
+        ipv4: () => `185.98.${Math.floor(Math.random()*256)}.${Math.floor(Math.random()*256)}`,
+        ipv6: () => `tr03:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}`
+      },
+      uae: {
+        ipv4: () => `5.63.${Math.floor(Math.random()*256)}.${Math.floor(Math.random()*256)}`,
+        ipv6: () => `ae01:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}`
+      },
+      iraq: {
+        ipv4: () => `79.128.${Math.floor(Math.random()*256)}.${Math.floor(Math.random()*256)}`,
+        ipv6: () => `iq01:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}`
+      },
+      netherlands: {
+        ipv4: () => `185.127.${Math.floor(Math.random()*256)}.${Math.floor(Math.random()*256)}`,
+        ipv6: () => `nl01:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}`
+      },
+      russia: {
+        ipv4: () => `185.39.${Math.floor(Math.random()*256)}.${Math.floor(Math.random()*256)}`,
+        ipv6: () => `ru01:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}:${randHexSegment()}`
+      }
+    };
+
+    function generateIPs() {
+      const country = document.getElementById("country-dns").value;
+      const gen = ipData[country];
+      const out = document.getElementById("output");
+      out.innerHTML = "";
+      out.innerHTML += genHTML(gen.ipv4());
+      for (let i = 0; i < 2; i++) {
+        out.innerHTML += genHTML(gen.ipv6());
+      }
+    }
+
+    function genHTML(ip) {
+      return `<div class="ip-block"><span class="ip-text">${ip}</span><button class="copy-btn" onclick="copyText('${ip}')">کپی</button></div>`;
+    }
+
+    function generateWireGuardConfig() {
+      const country = document.getElementById("country-wg").value;
+      const ipGen = ipData[country];
+      const ipv4_1 = ipGen.ipv4();
+      const ipv4_2 = ipGen.ipv4();
+
+      const privateKey = 'cCqX2Xy+d7ePzq9zNRg2hLq7jzYrwGyavhO4Y3HVtVw=';
+      const publicKey = 'W0tCFiYQxMKy9lDtXrLDc/ZPZmpU6xwZJwYt2tkMjCA=';
+      const dns = '78.157.42.100, 10.202.10.10';
+      const mtu = 1420;
+
+      const config = `[Interface]
+PrivateKey = ${privateKey}
+Address = ${ipv4_1}/32, ${ipv4_2}/32
+DNS = ${dns}
+MTU = ${mtu}
+
+[Peer]
+PublicKey = ${publicKey}
+Endpoint = ${ipv4_1}:51820
+PersistentKeepalive = 25`;
+
+      document.getElementById('configOutput').textContent = config;
+
+      let fileName = prompt(" نام کانفیگ:", "");
+      if (!fileName || fileName.trim() === "") fileName = "RSD-" + Date.now();
+
+      const blob = new Blob([config], { type: 'application/x-wireguard-conf' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = fileName + ".conf";
+      link.click();
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text);
+      const message = document.createElement('div');
+      message.textContent = 'کپی شد!';
+      message.style.position = 'fixed';
+      message.style.bottom = '20px';
+      message.style.right = '20px';
+      message.style.background = '#0f0';
+      message.style.color = '#000';
+      message.style.padding = '10px 20px';
+      message.style.borderRadius = '10px';
+      message.style.boxShadow = '0 0 10px rgba(0,0,0,0.3)';
+      message.style.zIndex = 9999;
+      document.body.appendChild(message);
+      setTimeout(() => message.remove(), 1500);
+    }
+  </script>
+</body>
+</html>
