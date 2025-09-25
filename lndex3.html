@@ -1,286 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>IP Generator Panel Combined</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>𝓑𝓜𝓦 IP Generator Panel Cold Theme</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 
-    body {
-      margin: 0;
-      font-family: 'Comfortaa', cursive, Arial, sans-serif;
-      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-      color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 30px 20px;
-      box-sizing: border-box;
-    }
-    h1 {
-      color: #ffffffcc;
-      font-size: 2.5em;
-      margin-bottom: 40px;
-      text-shadow: 0 0 10px rgba(255,255,255,0.5);
-    }
-    select, button {
-      padding: 12px 20px;
-      margin: 10px 15px;
-      border-radius: 12px;
-      border: none;
-      font-size: 1.1em;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      outline: none;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    select {
-      background-color: #ffffff33;
-      color: #fff;
-      min-width: 220px;
-      font-weight: 600;
-      text-shadow: 0 0 2px #00000055;
-    }
-    select:hover, select:focus {
-      background-color: #ffffff55;
-      box-shadow: 0 4px 14px rgba(255,255,255,0.4);
-    }
-    #country {
-      background-color: #2a7a2a99;
-      color: #d4ffd4;
-      font-weight: 700;
-      text-shadow: 0 0 6px #2a7a2aaa;
-    }
-    #version {
-      background-color: #2978b5aa;
-      color: #cceeff;
-      font-weight: 700;
-      text-shadow: 0 0 6px #2978b5cc;
-    }
-    #generate {
-      background-color: #ffffffdd;
-      color: #222;
-      font-weight: 700;
-      box-shadow: 0 5px 15px #ffffffaa;
-    }
-    #generate:hover {
-      background-color: #ffffffee;
-      box-shadow: 0 8px 20px #ffffffdd;
-    }
-    #copyBtn {
-      background-color: #444444cc;
-      color: #ddd;
-      font-weight: 600;
-      box-shadow: 0 3px 10px #222;
-      margin-left: 5px;
-    }
-    #copyBtn:hover {
-      background-color: #666666dd;
-      box-shadow: 0 5px 15px #444;
-    }
-    #output {
-      margin-top: 30px;
-      padding: 20px;
-      background-color: #222222cc;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 650px;
-      min-height: 160px;
-      white-space: pre-line;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 1.1em;
-      line-height: 1.5;
-      color: #aaffaa;
-      box-shadow: inset 0 0 15px #00ff0055;
-      user-select: text;
-    }
-    footer {
-      margin-top: auto;
-      text-align: center;
-      font-size: 14px;
-      color: #ffe066cc;
-      font-weight: 600;
-      letter-spacing: 1px;
-      padding: 15px 0 5px 0;
-      user-select: none;
-    }
-    footer div:last-child {
-      font-size: 13px;
-      margin-top: 6px;
-      color: #ffcc33cc;
-    }
+body {
+  margin: 0;
+  font-family: 'Comfortaa', cursive, Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #e0f7fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 20px;
+}
 
-    /* Responsive */
-    @media (max-width: 480px) {
-      select, button {
-        width: 90%;
-        margin: 8px 0;
-      }
-      #copyBtn {
-        margin-left: 0;
-      }
-      #output {
-        font-size: 1em;
-      }
-    }
-  </style>
+h1 {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #b3e5fc;
+  text-shadow: 0 0 10px #00bcd4;
+}
+
+select, button {
+  padding: 12px 20px;
+  margin: 10px 15px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1.1em;
+  font-family: 'UnifrakturCook', cursive;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+select {
+  background-color: #ffffff22;
+  color: #e0f7fa;
+  min-width: 220px;
+  font-weight: 600;
+}
+select:hover, select:focus {
+  background-color: #ffffff33;
+  box-shadow: 0 4px 14px rgba(255,255,255,0.4);
+}
+
+#country { background-color: #006064aa; color: #b2ebf2; font-weight: 700; }
+#version { background-color: #004d40aa; color: #80deea; font-weight: 700; }
+#generate { background-color: #00acc1dd; color: #000; font-weight: 700; }
+#generate:hover { background-color: #00bcd4ee; }
+#copyBtn { background-color: #006064cc; color: #ddd; font-weight: 600; }
+#copyBtn:hover { background-color: #00838fcc; }
+
+#output {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #004d40aa;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 650px;
+  min-height: 160px;
+  white-space: pre-line;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1em;
+  line-height: 1.5;
+  color: #b2ebf2;
+  box-shadow: inset 0 0 15px #00ff0055;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 14px;
+  color: #80deea;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 15px 0 5px 0;
+}
+footer a { color:#80deea; text-decoration:none; }
+
+@media (max-width: 480px) {
+  select, button { width: 90%; margin: 8px 0; }
+  #copyBtn { margin-left: 0; }
+  #output { font-size: 1em; }
+}
+</style>
 </head>
 <body>
-  <h1>IP Generator Combined Panel</h1>
+<h1>𝓑𝓜𝓦 IP Generator Panel</h1>
 
-  <select id="country">
-    <option value="Italy">Italy</option>
-    <option value="Albania">Albania</option>
-    <option value="Egypt">Egypt</option>
-    <option value="Japan">Japan</option>
-    <option value="Philippines">Philippines</option>
-    <option value="Sweden">Sweden</option>
-    <option value="Canada">Canada</option>
-    <option value="Turkey">Turkey</option>
-    <option value="Finland">Finland</option>
-    <option value="Netherlands">Netherlands</option>
-    <option value="Iraq">Iraq</option>
-    <option value="Australia">Australia</option>
-    <option value="France">France</option>
-    <option value="Russia">Russia</option>
-    <option value="Cyprus">Cyprus</option>
-    <option value="Ukraine">Ukraine</option>
-    <option value="Portugal">Portugal</option>
-    <option value="Germany">Germany</option>
-    <option value="UAE">United Arab Emirates</option>
-    <option value="QatarNew">Qatar (New)</option>
-    <option value="Israel">Israel</option>
-    <option value="SaudiArabia">Saudi Arabia</option>
-    <option value="Oman">Oman</option>
-    <option value="Iran">Iran</option>
-  </select>
+<select id="country">
+  <option value="Italy">Italy</option>
+  <option value="Albania">Albania</option>
+  <option value="Egypt">Egypt</option>
+  <option value="Japan">Japan</option>
+  <option value="Philippines">Philippines</option>
+  <option value="Sweden">Sweden</option>
+  <option value="Canada">Canada</option>
+  <option value="Turkey">Turkey</option>
+  <option value="Finland">Finland</option>
+  <option value="Netherlands">Netherlands</option>
+  <option value="Iraq">Iraq</option>
+  <option value="Australia">Australia</option>
+  <option value="France">France</option>
+  <option value="Russia">Russia</option>
+  <option value="Cyprus">Cyprus</option>
+  <option value="Ukraine">Ukraine</option>
+  <option value="Portugal">Portugal</option>
+  <option value="Germany">Germany</option>
+  <option value="UAE">United Arab Emirates</option>
+  <option value="QatarNew">Qatar (New)</option>
+  <option value="Israel">Israel</option>
+  <option value="SaudiArabia">Saudi Arabia</option>
+  <option value="Oman">Oman</option>
+  <option value="Iran">Iran</option>
+  <option value="HongKong">Hong Kong</option>
+  <option value="Taiwan">Taiwan</option>
+  <option value="Bangladesh">Bangladesh</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Thailand">Thailand</option>
+  <option value="Tajikistan">Tajikistan</option>
+</select>
 
-  <select id="version">
-    <option value="IPv4">IPv4</option>
-    <option value="IPv6">IPv6</option>
-    <option value="Both">Both</option>
-  </select>
+<select id="version">
+  <option value="IPv4">IPv4</option>
+  <option value="IPv6">IPv6</option>
+  <option value="Both">Both</option>
+</select>
 
-  <button id="generate" onclick="generateIPs()">Generate</button>
-  <button id="copyBtn" onclick="copyOutput()">Copy</button>
+<button id="generate" onclick="generateIPs()">Generate</button>
+<button id="copyBtn" onclick="copyOutput()">Copy</button>
 
-  <div id="output"></div>
+<div id="output"></div>
+<footer>
+  <div>DESIGNED AND DEVELOPED BY 𝓑𝓜𝓦</div>
+  <div><a href="https://t.me/ITS_GNH" target="_blank">@ITS_GNH</a></div>
+  <div>Version 1.0.4</div>
+</footer><script>
+function randomPart() {
+  return Math.floor(Math.random() * 255);
+}
 
-  <footer>
-    <div>DESIGNED AND DEVELOPED BY GN</div>
-    <div><a href="https://t.me/ITS_GNH" target="_blank" style="color:#ffe066cc; text-decoration:none;">@ITS_GNH</a></div>
-    <div>Version 1.0.3</div>
-  </footer>
+function makeIPv4(prefix) {
+  const cleanPrefix = prefix.trim().replace(/\.+$/, "");
+  const parts = cleanPrefix.split(".");
+  while (parts.length < 4) parts.push(randomPart());
+  return parts.join(".");
+}
 
-  <script>
-    function randomPart() {
-      return Math.floor(Math.random() * 255);
-    }
+function makeIPv6(prefix) {
+  const parts = prefix.split(":").filter(p => p);
+  while (parts.length < 8) parts.push(Math.floor(Math.random() * 65535).toString(16));
+  return parts.join(":");
+}
 
-    function makeIPv4(prefix) {
-      const cleanPrefix = prefix.trim().replace(/\.+$/, "");
-      const parts = cleanPrefix.split(".");
-      while (parts.length < 4) parts.push(randomPart());
-      return parts.join(".");
-    }
+// داده های IP برای کشورهای قدیمی و جدید
+const data = {
+  Italy: { ipv4: ["5.61"], ipv6: "2a01:65c0::" },
+  Albania: { ipv4: ["217.24.240"], ipv6: "2a00:6b80::" },
+  Egypt: { ipv4: ["41.32"], ipv6: "2001:42b8::" },
+  Japan: { ipv4: ["14.8"], ipv6: "2001:240:8000::" },
+  Philippines: { ipv4: ["27.49"], ipv6: "2001:d18::" },
+  Sweden: { ipv4: ["103.177.248."], ipv6: "2001:df3:3500::" },
+  Canada: { ipv4: ["15.195."], ipv6: "2001:18c0::" },
+  Turkey: { ipv4: ["31.140."], ipv6: "2001:3640::" },
+  Finland: { ipv4: ["37.33."], ipv6: "2a00:1190::" },
+  Netherlands: { ipv4: ["5.184."], ipv6: "2001:6d8::" },
+  Iraq: { ipv4: ["5.1.104.", "5.1.108."], ipv6: "2a00:c9e0::" },
+  Australia: { ipv4: ["1.179."], ipv6: "2001:360:8000::" },
+  France: { ipv4: ["24.230."], ipv6: "2a01:6600::" },
+  Russia: { ipv4: ["5.253.144."], ipv6: "2a01:6540::" },
+  Cyprus: { ipv4: ["37.149"], ipv6: "2a06:2a00::" },
+  Ukraine: { ipv4: ["5.58"], ipv6: "2001:3840::" },
+  Portugal: { ipv4: ["2.80"], ipv6: "2a02:27e0::" },
+  Germany: { ipv4: ["5.45"], ipv6: "2001:3880::" },
+  UAE: { ipv4: ["31.218"], ipv6: "2a07:3700::" },
+  QatarNew: { ipv4: ["178.152"], ipv6: "2a14:5480::" },
+  Israel: { ipv4: ["5.29"], ipv6: "2a02:ed0::" },
+  SaudiArabia: { ipv4: ["5.163"], ipv6: "2a14:f800::" },
+  Oman: { ipv4: ["5.21"], ipv6: "2a10:6cc0::" },
+  Iran: { ipv4: ["5.75"], ipv6: "2a00:4000::" },
+  HongKong: { ipv4: ["123.202."], ipv6: "2001:2e0:8000::" },
+  Taiwan: { ipv4: ["203.187."], ipv6: "2402:22e0::" },
+  Bangladesh: { ipv4: ["103.249."], ipv6: "2406:1400::" },
+  Georgia: { ipv4: ["37.232."], ipv6: "2a13:5140:" },
+  Thailand: { ipv4: ["222.123."], ipv6: "2404:4a00::" },
+  Tajikistan: { ipv4: ["77.95."], ipv6: "2a12:cec0:" }
+};
 
-    function makeIPv6(prefix) {
-      const parts = prefix.split(":").filter(p => p);
-      while (parts.length < 8) parts.push(Math.floor(Math.random() * 65535).toString(16));
-      return parts.join(":");
-    }
+function generateIPs() {
+  const country = document.getElementById("country").value;
+  const version = document.getElementById("version").value;
+  const output = document.getElementById("output");
+  output.textContent = "";
 
-    const data = {
-      Italy: { ipv4: ["5.61"], ipv6: "2a01:65c0::" },
-      Albania: { ipv4: ["217.24.240"], ipv6: "2a00:6b80::" },
-      Egypt: { ipv4: ["41.32"], ipv6: "2001:42b8::" },
-      Japan: { ipv4: ["14.8"], ipv6: "2001:240:8000::" },
-      Philippines: { ipv4: ["27.49"], ipv6: "2001:d18::" },
-      Sweden: { ipv4: ["103.177.248."], ipv6: "2001:df3:3500::" },
-      Canada: { ipv4: ["15.195."], ipv6: "2001:18c0::" },
-      Turkey: { ipv4: ["31.140."], ipv6: "2001:3640::" },
-      Finland: { ipv4: ["37.33."], ipv6: "2a00:1190::" },
-      Netherlands: { ipv4: ["5.184."], ipv6: "2001:6d8::" },
-      Iraq: { ipv4: ["5.1.104.", "5.1.108."], ipv6: "2a00:c9e0::" },
-      Australia: { ipv4: ["1.179."], ipv6: "2001:360:8000::" },
-      France: { ipv4: ["24.230."], ipv6: "2a01:6600::" },
-      Russia: { ipv4: ["5.253.144."], ipv6: "2a01:6540::" },
+  if (!data[country]) {
+    output.textContent = "No data available for selected country.";
+    return;
+  }
 
-      Cyprus: { ipv4: ["37.149"], ipv6: "2a06:2a00::" },
-      Ukraine: { ipv4: ["5.58"], ipv6: "2001:3840::" },
-      Portugal: { ipv4: ["2.80"], ipv6: "2a02:27e0::" },
-      Germany: { ipv4: ["5.45"], ipv6: "2001:3880::" },
-      UAE: { ipv4: ["31.218"], ipv6: "2a07:3700::" },
-      QatarNew: { ipv4: ["178.152"], ipv6: "2a14:5480::" },
-      Israel: { ipv4: ["5.29"], ipv6: "2a02:ed0::" },
-      SaudiArabia: { ipv4: ["5.163"], ipv6: "2a14:f800::" },
-      Oman: { ipv4: ["5.21"], ipv6: "2a10:6cc0::" },
-      Iran: { ipv4: ["5.75"], ipv6: "2a00:4000::" }
-    };
+  const selected = data[country];
 
-    function generateIPs() {
-      const country = document.getElementById("country").value;
-      const version = document.getElementById("version").value;
-      const output = document.getElementById("output");
-      output.textContent = "";
+  if (version === "IPv4") {
+    output.textContent += `IPv4(1): ${makeIPv4(selected.ipv4[0])}\n`;
+    output.textContent += `IPv4(2): 1.1.1.1\n`;
+  } else if (version === "IPv6") {
+    output.textContent += `IPv6(1): ${makeIPv6(selected.ipv6)}\n`;
+    output.textContent += `IPv6(2): ${makeIPv6(selected.ipv6)}\n`;
+  } else { // Both
+    output.textContent += `IPv4(1): ${makeIPv4(selected.ipv4[0])}\n`;
+    output.textContent += `IPv4(2): 1.1.1.1\n\n`;
+    output.textContent += `IPv6(1): ${makeIPv6(selected.ipv6)}\n`;
+    output.textContent += `IPv6(2): ${makeIPv6(selected.ipv6)}\n`;
+  }
+}
 
-      if (!data[country]) {
-        output.textContent = "No data available for selected country.";
-        return;
-      }
+function copyOutput() {
+  const output = document.getElementById("output");
+  const text = output.textContent.trim();
+  if (!text) {
+    alert("Nothing to copy. Please generate IPs first.");
+    return;
+  }
 
-      const selected = data[country];
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied to clipboard!");
+    }).catch(() => { fallbackCopy(text); });
+  } else {
+    fallbackCopy(text);
+  }
+}
 
-      if (version === "IPv4") {
-        output.textContent += `IPv4(1): ${makeIPv4(selected.ipv4[0])}\n`;
-        output.textContent += `IPv4(2): 1.1.1.1\n`;
-      } else if (version === "IPv6") {
-        output.textContent += `IPv6(1): ${makeIPv6(selected.ipv6)}\n`;
-        output.textContent += `IPv6(2): ${makeIPv6(selected.ipv6)}\n`;
-      } else {
-        output.textContent += `IPv4(1): ${makeIPv4(selected.ipv4[0])}\n`;
-        output.textContent += `IPv4(2): 1.1.1.1\n\n`;
-        output.textContent += `IPv6(1): ${makeIPv6(selected.ipv6)}\n`;
-        output.textContent += `IPv6(2): ${makeIPv6(selected.ipv6)}\n`;
-      }
-    }
-
-    function copyOutput() {
-      const output = document.getElementById("output");
-      const text = output.textContent.trim();
-      if (!text) {
-        alert("Nothing to copy. Please generate IPs first.");
-        return;
-      }
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => {
-          alert("Copied to clipboard!");
-        }).catch(() => {
-          fallbackCopy(text);
-        });
-      } else {
-        fallbackCopy(text);
-      }
-    }
-
-    function fallbackCopy(text) {
-      const textarea = document.createElement("textarea");
-      textarea.value = text;
-      document.body.appendChild(textarea);
-      textarea.select();
-      try {
-        const successful = document.execCommand('copy');
-        if (successful) alert("Copied to clipboard!");
-        else alert("Failed to copy. Try again.");
-      } catch (err) {
-        alert("Failed to copy. Try again.");
-      }
-      document.body.removeChild(textarea);
-    }
-  </script>
+function fallbackCopy(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    const successful = document.execCommand('copy');
+    if (successful) alert("Copied to clipboard!");
+    else alert("Failed to copy. Try again.");
+  } catch (err) {
+    alert("Failed to copy. Try again.");
+  }
+  document.body.removeChild(textarea);
+}
+</script>
 </body>
 </html>
-
